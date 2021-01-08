@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-content class="flex-column-container">
+    <form [formGroup]="form">
+      <p>
+        Choose the path of your local directory that you wish to sync to Craedl.
+      </p>
+      <div class="flex-container form-field-btn-container">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Local path" formControlName="path" required>
+          <mat-error align="end">
+            <div *ngIf="form.controls.path.errors?.required">{{errors.pathRequired}}</div>
+          </mat-error>
+        </mat-form-field>
+        <button mat-raised-button class="primary left-margin" (click)="chooseDirectory()">BROWSE</button>
+      </div>
+      <p class="top-padding">
+        Go to <a href="https://craedl.org" target="_blank">Craedl</a> and navigate to the directory into which you wish to sync your local directory. Copy the URL and paste it below.
+      </p>
+      <div class="flex-container">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Craedl URL" formControlName="url" required>
+          <mat-error align="end">
+            <div *ngIf="form.controls.url.errors?.required">{{errors.urlRequired}}</div>
+            <div *ngIf="form.controls.url.errors?.pattern">{{errors.urlPattern}}</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </form>
+    <p class="left top-padding">
+      Output log:
+    </p>
+    <div id="log-container" class="flex-fill"></div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button class="primary" (click)="sync()" [disabled]="!form.valid || !recvResponse">SYNC</button>
+  </mat-card-actions>
+</mat-card>

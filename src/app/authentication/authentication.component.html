@@ -1,0 +1,38 @@
+<mat-card *ngIf="!recvResponse; else authenticateCard">
+  <mat-card-content>
+    <div class="relative-container">
+      <div class="absolute-container">
+        <p>
+          Authenticating...
+        </p>
+        <mat-spinner diameter="100" strokeWidth="7"></mat-spinner>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #authenticateCard>
+  <mat-card>
+    <mat-card-content>
+      <div class="relative-container">
+        <div id="auth-container" class="absolute-container">
+          <p>
+            Enter your Craedl authentication token, which you can obtain from your <a href="https://craedl.org" target="_blank">Craedl</a> account, below.
+          </p>
+          <form [formGroup]="form" class="flex-container">
+            <mat-form-field>
+              <input matInput type="password" placeholder="Token" formControlName="token" (focus)="clearInvalidToken()" required>
+              <mat-error align="end">
+                <div *ngIf="form.controls.token.errors?.required">{{errors.required}}</div>
+                <div *ngIf="form.controls.token.errors?.minlength || form.controls.errors?.maxlength">{{errors.length}}</div>
+              </mat-error>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button class="primary" (click)="configure()" [disabled]="!form.valid">AUTHENTICATE</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>

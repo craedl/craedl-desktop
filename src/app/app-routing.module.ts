@@ -1,7 +1,26 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 
-const routes: Routes = [];
+// Components
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { SyncComponent } from './sync/sync.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'auth',
+  },
+  {
+    path: 'auth',
+    component: AuthenticationComponent,
+  },
+  {
+    path: 'sync',
+    component: SyncComponent,
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],

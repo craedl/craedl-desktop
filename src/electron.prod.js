@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, shell, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
 
@@ -9,9 +9,13 @@ let win;
 const createWindow = () => {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 850,
+        height: 700,
         icon: path.join(__dirname, 'favicon.ico'),
+        webPreferences: {
+            nodeIntegration: true,
+            enableRemoteModule: true
+        }
     });
 
     // and load the index.html of the app.
@@ -20,6 +24,11 @@ const createWindow = () => {
         protocol: 'file:',
         slashes: true
     }));
+
+    win.webContents.on('new-window', function(event, url) {
+        event.preventDefault();
+        shell.openExternal(url);
+    });
 
     // Emitted when the window is closed.
     win.on('closed', () => {
