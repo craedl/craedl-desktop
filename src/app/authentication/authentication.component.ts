@@ -66,7 +66,7 @@ export class AuthenticationComponent implements OnInit {
       var python = window.require('child_process').spawn('python', [
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'python/authenticate.py'
+          'assets/python/authenticate.py'
         )
       ]);
       python.stdout.on('data', data => {
@@ -114,7 +114,7 @@ export class AuthenticationComponent implements OnInit {
       var python = window.require('child_process').spawn('python', [
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'python/configure.py'
+          'assets/python/configure.py'
         ),
         this.form.get('token').value
       ]);

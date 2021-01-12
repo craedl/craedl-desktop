@@ -8,6 +8,7 @@
 /bazel-out
 
 # dependencies
+/deps
 /node_modules
 /packages
 
@@ -41,6 +42,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/venv
+winehq.key
 
 # System Files
 .DS_Store

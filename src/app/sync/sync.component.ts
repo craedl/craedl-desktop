@@ -140,7 +140,7 @@ export class SyncComponent implements OnInit {
       var python = window.require('child_process').spawn('python', [
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'python/sync.py'
+          'assets/python/sync.py'
         ),
         path,
         this.form.get('url').value
