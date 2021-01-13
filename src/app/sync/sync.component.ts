@@ -137,14 +137,17 @@ export class SyncComponent implements OnInit {
     let path: string = this.form.get('path').value;
     this.appendToLog('Syncing ' + path);
     this.zone.runOutsideAngular(() => {
-      var python = window.require('child_process').spawn('python', [
+      var python = window.require('child_process').execFile(
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'assets/python/sync.py'
+          'assets/exe/main'
         ),
-        path,
-        this.form.get('url').value
-      ]);
+        [
+          'sync',
+          path,
+          this.form.get('url').value
+        ]
+      );
       python.stdout.on('data', data => {
         this.zone.run(() => {
           data = data.toString('utf8');

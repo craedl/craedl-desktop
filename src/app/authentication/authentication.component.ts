@@ -63,12 +63,15 @@ export class AuthenticationComponent implements OnInit {
    */
   authenticate(): void {
     this.zone.runOutsideAngular(() => {
-      var python = window.require('child_process').spawn('python', [
+      var python = window.require('child_process').execFile(
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'assets/python/authenticate.py'
-        )
-      ]);
+          'assets/exe/main'
+        ),
+        [
+          'auth'
+        ]
+      );
       python.stdout.on('data', data => {
         this.zone.run(() => {
           this.recvResponse = true;
@@ -111,13 +114,16 @@ export class AuthenticationComponent implements OnInit {
   configure(): void {
     this.recvResponse = false;
     this.zone.runOutsideAngular(() => {
-      var python = window.require('child_process').spawn('python', [
+      var python = window.require('child_process').execFile(
         window.require('path').join(
           window.require('electron').remote.app.getAppPath(),
-          'assets/python/configure.py'
+          'assets/exe/main'
         ),
-        this.form.get('token').value
-      ]);
+        [
+          'conf',
+          this.form.get('token').value
+        ]
+      );
       python.stdout.on('data', data => {
         this.zone.run(() => {
           this.authenticate();
