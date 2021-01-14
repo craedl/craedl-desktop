@@ -1,6 +1,6 @@
 {
   "name": "craedl-desktop",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "concurrently \"ng serve\" \"npm run electron\"",
@@ -10,10 +10,10 @@
     "e2e": "ng e2e",
     "electron": "electron ./src/electron.dev",
     "electron-build": "ng build --prod",
-    "package:win": "npm run electron-build && cross-var electron-packager dist $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite ",
-    "package:linux": "npm run electron-build && cross-var electron-packager dist $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite ",
-    "package:osx": "npm run electron-build && cross-var electron-packager dist $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite ",
-    "package:all": "npm run electron-build && cross-var electron-packager dist $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite "
+    "package:win": "npm run electron-build && cross-var electron-packager dist $npm_package_name --out=packages --platform=win32 --arch=all --overwrite ",
+    "package:linux": "npm run electron-build && cross-var electron-packager dist $npm_package_name --out=packages --platform=linux --arch=all --overwrite ",
+    "package:osx": "npm run electron-build && cross-var electron-packager dist $npm_package_name --out=packages --platform=darwin --arch=all --overwrite ",
+    "package:all": "npm run electron-build && cross-var electron-packager dist $npm_package_name --out=packages --all --arch=all --overwrite "
   },
   "private": true,
   "dependencies": {
