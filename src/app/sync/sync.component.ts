@@ -151,7 +151,7 @@ export class SyncComponent implements OnInit {
       python.stdout.on('data', data => {
         this.zone.run(() => {
           data = data.toString('utf8');
-          if (data === 'success\n') {
+          if (data === 'success\n' || data === 'success\r\n') {
             this.recvResponse = true;
             this.appendToLog('Sync successful!', '#228b22');
           } else {
