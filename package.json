@@ -10,10 +10,10 @@
     "e2e": "ng e2e",
     "electron": "electron ./src/electron.dev",
     "electron-build": "ng build --prod",
-    "package:win": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --out=packages --platform=win32 --arch=all --overwrite ",
-    "package:linux": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --out=packages --platform=linux --arch=all --overwrite ",
-    "package:osx": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --out=packages --platform=darwin --arch=all --overwrite ",
-    "package:all": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --out=packages --all --arch=all --overwrite "
+    "package:win": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --extra-resource=./README.md --extra-resource=./LICENSE --out=packages --platform=win32 --arch=all --overwrite ",
+    "package:linux": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --extra-resource=./README.md --extra-resource=./LICENSE --out=packages --platform=linux --arch=all --overwrite ",
+    "package:osx": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --extra-resource=./README.md --extra-resource=./LICENSE --out=packages --platform=darwin --arch=all --overwrite ",
+    "package:all": "npm run electron-build && cross-var electron-packager dist $npm_package_name --icon=./src/favicon.ico --extra-resource=./README.md --extra-resource=./LICENSE --out=packages --all --arch=all --overwrite "
   },
   "private": true,
   "dependencies": {
